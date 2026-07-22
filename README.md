@@ -1,4 +1,4 @@
-# 🚀 Space Invaders: Deluxe Edition (Versão Beta)
+# 🚀 Space Invaders: Deluxe Edition (Versão Beta) v3.5
 
 Bem-vindo à versão **Beta de Testes** do Space Invaders Deluxe Edition! 🧪
 
