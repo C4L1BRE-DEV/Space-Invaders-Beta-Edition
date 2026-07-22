@@ -123,7 +123,7 @@
             <div class="edition-badge">✨ VERSÃO BETA DE TESTES ✨</div>
             <p style="font-size: 11px; color: #aaa; margin: 10px 0;">Esta versão é restrita. Digite o código de liberação para jogar:</p>
             
-            <input type="password" id="beta-code-input" placeholder="Digite o código aqui...">
+            <input type="password" id="beta-code-input" placeholder="Digite a chave aqui...">
             <button class="btn" onclick="validarCodigoBeta()">LIBERAR VERSÃO BETA</button>
             <p id="beta-error-msg" style="color: #ff0055; font-size: 11px; margin-top: 5px;"></p>
             
@@ -218,19 +218,11 @@
     </div>
 
 <script>
-    // Código hash seguro de "PROJETO BETA"
-    const BETA_HASH = "68213612803c6a47a110b6510e42ec1be0d53c7c5dd97a3efd2859c2ef3a61f3";
+    function validarCodigoBeta() {
+        const input = document.getElementById("beta-code-input").value.trim().toLowerCase();
 
-    async function sha256(str) {
-        const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    async function validarCodigoBeta() {
-        const input = document.getElementById("beta-code-input").value.trim();
-        const hashDigitado = await sha256(input);
-
-        if (hashDigitado === BETA_HASH) {
+        // Código configurado para: projeto_beta
+        if (input === "projeto_beta") {
             localStorage.setItem("space_beta_unlocked", "true");
             showScreen('menu-screen');
         } else {
@@ -238,7 +230,7 @@
         }
     }
 
-    // Se a pessoa já desbloqueou no navegador dela antes, entra direto no menu
+    // Se já foi desbloqueado antes no mesmo navegador, entra direto
     if (localStorage.getItem("space_beta_unlocked") === "true") {
         document.getElementById("lock-screen").classList.add("hidden");
         document.getElementById("menu-screen").classList.remove("hidden");
